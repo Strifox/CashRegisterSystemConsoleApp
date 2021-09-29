@@ -93,14 +93,14 @@ namespace CashRegysterSystem
         }
 
         /// <summary>
-        /// Writes all existing customers
+        /// Writes all existing customers and amount of movies rented
         /// </summary>
         internal void ShowCustomers()
         {
             Console.WriteLine("Kunder:");
             foreach (var customer in customers)
             {
-                Console.WriteLine($"{customer.Name}");
+                Console.WriteLine($"{customer.Name}\n -Hyrda filmer: {customer.BluRayMoviesRented + customer.DvdMoviesRented}");
             }
         }
 
