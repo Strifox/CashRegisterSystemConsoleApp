@@ -7,6 +7,11 @@ namespace CashRegysterSystem
 {
     public class OrderHandler
     {
+        /// <summary>
+        /// Creates customer order
+        /// </summary>
+        /// <param name="customerHandler"></param>
+        /// <param name="priceHandler"></param>
         internal void CreateOrder(CustomerHandler customerHandler, PriceHandler priceHandler)
         {
             Customer customer = customerHandler.CreateCustomer();

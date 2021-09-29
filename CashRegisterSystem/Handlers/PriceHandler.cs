@@ -60,7 +60,7 @@ namespace CashRegysterSystem
                     // else if no dvd movies, returns total price 100 + discount for blu-ray movies only
                     if (dvdMovies >= 4)
                     {
-                        // Sets new dvd price for all dvd movies - 4 movies
+                        // Sets new price for all dvd movies minus 4 movies
                         dvdDiscountedPrice = Movie.MovieDiscount(
                             (dvdMovies - 4) * DvdMovie.Price,
                             DvdMovie.Discount
@@ -69,13 +69,13 @@ namespace CashRegysterSystem
                     }
                     else if (dvdMovies == 3)
                     {
-                        // Sets new blu-ray price for all blu-ray movies - 1 movie
+                        //Sets new price for all blu-ray movies minus 1 blu-ray movie
                         bluRayDiscountedPrice = Movie.MovieDiscount(
                             (bluRayMovies - 1) * BluRayMovie.Price,
                             BluRayMovie.Discount
                             );
 
-                        // Sets new dvd price for all dvd movies - 3 movies
+                        //Sets new price for all dvd movies minus 3 dvd movies
                         dvdDiscountedPrice = Movie.MovieDiscount(
                             (dvdMovies - 3) * DvdMovie.Price,
                             DvdMovie.Discount
@@ -85,13 +85,13 @@ namespace CashRegysterSystem
                     }
                     else if (dvdMovies == 2)
                     {
-                        // Sets new blu-ray price for all blu-ray movies - 2 movies
+                        //Sets new price for all blu-ray movies minus 2 blu-ray movies
                         bluRayDiscountedPrice = Movie.MovieDiscount(
                             (bluRayMovies - 2) * BluRayMovie.Price,
                             BluRayMovie.Discount
                             );
 
-                        // Sets new dvd price for all dvd movies - 2 movies
+                        //Sets new price for all dvd movies minus 2 dvd movies
                         dvdDiscountedPrice = Movie.MovieDiscount(
                             (dvdMovies - 2) * DvdMovie.Price,
                             DvdMovie.Discount
@@ -101,13 +101,13 @@ namespace CashRegysterSystem
                     }
                     else if (dvdMovies == 1)
                     {
-                        // Sets new blu-ray price for all blu-ray movies - 3 movies
+                        //Sets new price for all blu-ray movies minus 3 blu-ray movies
                         bluRayDiscountedPrice = Movie.MovieDiscount(
                             (bluRayMovies - 3) * BluRayMovie.Price,
                             BluRayMovie.Discount
                             );
 
-                        // Sets new dvd-ray price for all dvd movies - 1 movie
+                        //Sets new price for all dvd movies minus 1 dvd movie
                         dvdDiscountedPrice = Movie.MovieDiscount(
                             (dvdMovies - 1) * DvdMovie.Price,
                             DvdMovie.Discount
@@ -116,8 +116,8 @@ namespace CashRegysterSystem
                         return customer.TotalPrice += bluRayDiscountedPrice + dvdDiscountedPrice;
                     }
 
-                    // Sets new blu-ray price for all blu-ray movies - 4 movies
-                    // Will only happen if there are no dvd movies
+                    //Sets new price for all blu-ray movies minus 4 blu-ray movies
+                    //Only happens if there are no dvd movies
                     bluRayDiscountedPrice = Movie.MovieDiscount(
                         (bluRayMovies - 4) * BluRayMovie.Price,
                         BluRayMovie.Discount
@@ -126,10 +126,11 @@ namespace CashRegysterSystem
                     return customer.TotalPrice += bluRayDiscountedPrice;
                 }
 
-                // Will return 100 (if amountOfMovies == 4)
+                //Returns 100 (if amountOfMovies == 4)
                 return customer.TotalPrice;
             }
 
+            //Returns standard discounts if less than 4 movies is rented
             return customer.TotalPrice = dvdDiscountedPrice + bluRayDiscountedPrice;
         }
     }

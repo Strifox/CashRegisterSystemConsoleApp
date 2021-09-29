@@ -9,6 +9,10 @@ namespace CashRegysterSystem
     {
         internal readonly List<Customer> customers = new List<Customer>();
 
+        /// <summary>
+        /// Creates customer
+        /// </summary>
+        /// <returns></returns>
         internal Customer CreateCustomer()
         {
             Console.WriteLine("Kundnamn:");
@@ -31,19 +35,27 @@ namespace CashRegysterSystem
             };
         }
 
+        /// <summary>
+        /// Checks and writes customer info to console if customer exists
+        /// </summary>
         internal void GetCustomerInfo()
         {
             while (true)
             {
                 Console.WriteLine("\nSkriv in kundnamn:");
-                if (IsCustomerMatched(Console.ReadLine()))
+                if (IsCustomerExisting(Console.ReadLine()))
                     break;
 
                 Console.WriteLine("Fel kundnamn!");
             }
         }
 
-        private bool IsCustomerMatched(string customerName)
+        /// <summary>
+        /// Checks if customer exists
+        /// </summary>
+        /// <param name="customerName"></param>
+        /// <returns>True if exists</returns>
+        private bool IsCustomerExisting(string customerName)
         {
             foreach (var customer in customers)
             {
@@ -68,6 +80,10 @@ namespace CashRegysterSystem
             return false;
         }
 
+        /// <summary>
+        /// Checks if customer list is empty
+        /// </summary>
+        /// <returns>Returns true if not empty</returns>
         internal bool IsListEmpty()
         {
             if (customers.Count == 0)
@@ -76,6 +92,9 @@ namespace CashRegysterSystem
             return false;
         }
 
+        /// <summary>
+        /// Writes all existing customers
+        /// </summary>
         internal void ShowCustomers()
         {
             Console.WriteLine("Kunder:");
@@ -85,6 +104,10 @@ namespace CashRegysterSystem
             }
         }
 
+        /// <summary>
+        /// Gets user input and tries parsing to integer
+        /// </summary>
+        /// <returns>Integer</returns>
         private static int GetInputNumber()
         {
             int userInput = 0;
@@ -98,6 +121,10 @@ namespace CashRegysterSystem
             return userInput;
         }
 
+        /// <summary>
+        /// Checks if customer is member or not
+        /// </summary>
+        /// <returns>True if member</returns>
         private static bool IsMember()
         {
             Console.WriteLine("\nMedlem\nTryck på:\n[1] Ja\n[2] Nej");
