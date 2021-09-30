@@ -1,6 +1,7 @@
 ﻿using CashRegysterSystem.Models;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace CashRegysterSystem
@@ -8,13 +9,15 @@ namespace CashRegysterSystem
     public class CustomerHandler
     {
         internal readonly List<Customer> customers = new List<Customer>();
-
+        private int id = 0;
         /// <summary>
         /// Creates customer
         /// </summary>
         /// <returns></returns>
         internal Customer CreateCustomer()
         {
+            id++;
+
             Console.WriteLine("Kundnamn:");
             string name = Console.ReadLine();
 
@@ -28,6 +31,7 @@ namespace CashRegysterSystem
 
             return new Customer
             {
+                Id = id, 
                 Name = name,
                 Membership = membership,
                 DvdMoviesRented = dvdMoviesRented,
@@ -42,24 +46,24 @@ namespace CashRegysterSystem
         {
             while (true)
             {
-                Console.WriteLine("\nSkriv in kundnamn:");
-                if (IsCustomerExisting(Console.ReadLine()))
+                Console.WriteLine("\nSkriv in kund id:");
+                if (IsCustomerExisting(GetInputNumber()))
                     break;
 
-                Console.WriteLine("Fel kundnamn!");
+                Console.WriteLine("Fel id!");
             }
         }
 
         /// <summary>
         /// Checks if customer exists
         /// </summary>
-        /// <param name="customerName"></param>
+        /// <param name="name"></param>
         /// <returns>True if exists</returns>
-        private bool IsCustomerExisting(string customerName)
+        private bool IsCustomerExisting(int id)
         {
             foreach (var customer in customers)
             {
-                if (customerName == customer.Name)
+                if (id == customer.Id)
                 {
                     string membership;
 
@@ -69,7 +73,8 @@ namespace CashRegysterSystem
                         membership = "Nej";
 
                     Console.Clear();
-                    Console.WriteLine($"Kund: {customer.Name}" +
+                    Console.WriteLine($"Id: {customer.Id}" +
+                        $"Kund: {customer.Name}" +
                         $"\nMedlem: {membership}" +
                         $"\nAntal hyrda dvd filmer: {customer.DvdMoviesRented}" +
                         $"\nAntal hyrda blu-ray filmer: {customer.BluRayMoviesRented}" +
@@ -100,7 +105,7 @@ namespace CashRegysterSystem
             Console.WriteLine("Kunder:");
             foreach (var customer in customers)
             {
-                Console.WriteLine($"{customer.Name}\n -Hyrda filmer: {customer.BluRayMoviesRented + customer.DvdMoviesRented}");
+                Console.WriteLine($"Id:{customer.Id}\t{customer.Name}\n - Hyrda filmer: {customer.BluRayMoviesRented + customer.DvdMoviesRented}\n");
             }
         }
 
